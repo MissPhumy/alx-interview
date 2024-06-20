@@ -58,23 +58,19 @@ Write a script that reads `stdin` line by line and computes metrics:
 - The length of your files will be tested using `wc`
 
 
-Possible status codes: 200, 301, 400, 401, 403, 404, 405, 500
-If a status code doesn’t appear or is not an integer, don’t print anything for this status code.
-plaintext
-Copy code
-<status code>: <number>
-Status codes should be printed in ascending order.
-Example
-plaintext
-Copy code
-10.0.0.1 - [2017-02-05 23:59:59.123456] "GET /projects/260 HTTP/1.1" 200 1000
-10.0.0.1 - [2017-02-05 23:59:59.123456] "GET /projects/260 HTTP/1.1" 301 200
-10.0.0.1 - [2017-02-05 23:59:59.123456] "GET /projects/260 HTTP/1.1" 400 300
+Write a script that reads stdin line by line and computes metrics:
 
-Output after 10 lines or keyboard interruption:
-File size: 1500
-200: 1
-301: 1
-400: 1
-Warning: In this sample, you will have random values - it’s normal to not have the same output as this one.
+**Input format:** `<IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>` (if the format is not this one, the line must be skipped)
+
+After every 10 lines and/or a keyboard interruption (CTRL + C), print these statistics from the beginning:
+
+**Total file size:** `File size: <total size>`  
+where `<total size>` is the sum of all previous `<file size>` (see input format above)
+
+**Number of lines by status code:**
+Possible status code: 200, 301, 400, 401, 403, 404, 405, and 500.  
+If a status code doesn’t appear or is not an integer, don’t print anything for this status code.  
+Format: `<status code>: <number>`  
+Status codes should be printed in ascending order.
+
 
