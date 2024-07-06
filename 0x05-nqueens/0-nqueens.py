@@ -17,7 +17,7 @@ def is_valid(board, row, col):
     for i, j in zip(range(row-1, -1, -1), range(col+1, len(board))):
         if board[i] == j:
             return False
-    return True
+    return True 
 
 def solve_nqueens(n):
     def backtrack(board, row):
@@ -29,6 +29,7 @@ def solve_nqueens(n):
                 board[row] = col
                 backtrack(board, row + 1)
                 board[row] = -1
+
 def print_solution(board):
         solution = []
         for row in range(n):
@@ -42,8 +43,8 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-
-	try:
+    
+    try:
         N = int(sys.argv[1])
     except ValueError:
         print("N must be a number")
@@ -52,7 +53,5 @@ if __name__ == "__main__":
     if N < 4:
         print("N must be at least 4")
         sys.exit(1)
-
+	    
     solve_nqueens(N) 
-        
-
